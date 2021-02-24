@@ -15,58 +15,56 @@
 
 
 	<link href="https://fonts.googleapis.com/css2?family=Karma:wght@400;600&display=swap" rel="stylesheet">	
-	<link href="index-style.css" rel="stylesheet" type="text/css"/>
+	<link href="log-in-style.css" rel="stylesheet" type="text/css"/>
 	<link href="fontello/css/github.css" rel="stylesheet" type="text/css"/>
 	
 </head>
 
 <body>
-
-	<header>
-
+    <main>
         <div class="container-fluid">
-
-            <div class="row">
-		
-                <div class="col">
-                    <img src="img/logo.png" width="90" height="90" alt="" class="mt-3"/>
-                </div>
-                <div class="col">
-                    <a href="log-in.html" class="btn btn-primary log-in-btn mt-3 mr-3" value="Zaloguj się!" tabindex="-1" role="button" aria-disabled="true">Zaloguj się</a>
-                </div> 	
-                
-            </div>
-
-        </div>
-		
-	</header>
-	
-	<main>
-
-        <section>
-
-            <div class="container main-cont">
             
-                    <h1 class="col title text-center">Twoje finanse pod pełną kontorlą</h1>
-                    <p class="col description text-center">PersonalBudget pozwoli w prosty sposób kontrolować Twoje finanse,<br/>
-                    zoptymalizyje wydatki, zwiększy oszczędności.</p>	
-                    
-                    <p class="col description text-center">Zacznij spełniać marzenia już dziś!</p>
-                        
-                    <div class="col" style="text-align: center;">
-                        <a href="sign-in.html" class="btn btn-primary sign-in-btn" tabindex="-1" role="button" aria-disabled="true">Załóż konto!</a>
+            <div class="row">                   
+
+                <div class="col mainbg">
+
+                    <div class="d-inline-block">
+                        <a href="index.html"><img id="logo" src="img/logo.png" width="90" height="90" alt=""/></a>
                     </div>
+
+                    <div class="col title">
+                        <h1>Zaloguj się do swojego konta<br/>PersonalBudget</h1>
+                    </div>
+
+                    <form action="" method="post">
+                        
+                        <div class="form-group d-flex justify-content-center">
+                            <input type="text" class="form-control" aria-describedby="login" placeholder="login">
+                        </div>
+
+                        <div class="form-group d-flex justify-content-center">
+                            <input type="password" class="form-control" placeholder="hasło">
+                        </div>
+
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn login-btn text-center"> Zaloguj się</button>
+                        </div>
+
+                    </form>
+
+                    <h5 class="d-flex justify-content-center">Nie posiadasz konta? <a href="sign-in.html" class="createAccount"> Zarejestruj się</a></h5>
+
+                </div>
             </div>
+        </div>
 
-        </section>        
-		
-	</main>	
+    </main>
 
-	<footer>
+    <footer>
 
-        <div class="container foot-cont">
+        <div class="container">
 
-            <div class="row">
+            <div class="row foot-cont">                           
 
                 <a href="https://www.linkedin.com/in/bartosz-kut-0aa1a3167/" class="col-12 col-sm-8 col-md-5 col-lg-4 linkedin mx-auto mt-4 li">            
                     <i class="icon-linkedin-squared icon"><h6>https://bit.ly/37G6duy</h6></i>                                     
@@ -78,14 +76,11 @@
 
                 <div class="col-12 col-sm-8 col-md-5 col-lg-4 mx-auto mt-4 ct">  
                     <i class="icon-mail-alt icon"><h6>@: bartosz.kut93@gmail.com<br/>m: +48 792 722 230</h6></i>                    
-                </div>
-         
+                </div>               
             </div>
-
         </div>
-
 	</footer>
-	
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
 	<script src="../../bootstrap-5.0.0-beta2-dist/js/bootstrap.min.js"></script>
