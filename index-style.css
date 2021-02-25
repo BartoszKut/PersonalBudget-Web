@@ -51,8 +51,11 @@ body{
     display: inline-block;
     margin-top: 100px;
     font-family: 'Karma', serif;
-	padding: 25px 100px 20px 100px;
+	padding-top: 25px;
+	padding-bottom: 20px;
 	background-color: #9ccc66;
+	width: 70%;
+	max-width: 400px;
 	font-size: 28px;
 	font-weight: 600;
 	text-decoration: none;	
