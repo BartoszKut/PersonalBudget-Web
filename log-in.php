@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -29,22 +33,26 @@
                 <div class="col mainbg">
 
                     <div class="d-inline-block">
-                        <a href="index.html"><img id="logo" src="img/logo.png" width="90" height="90" alt=""/></a>
+                        <a href="index.php"><img id="logo" src="img/logo.png" width="90" height="90" alt=""/></a>
                     </div>
 
                     <div class="col title">
                         <h1>Zaloguj się do swojego konta<br/>PersonalBudget</h1>
                     </div>
 
-                    <form action="" method="post">
+                    <form action="log_and_pass_check.php" method="post">
                         
                         <div class="form-group d-flex justify-content-center">
-                            <input type="text" class="form-control" aria-describedby="login" placeholder="login">
+                            <input type="text" class="form-control" name="login" placeholder="login">
                         </div>
 
                         <div class="form-group d-flex justify-content-center">
-                            <input type="password" class="form-control" placeholder="hasło">
+                            <input type="password" class="form-control" name="password" placeholder="hasło">
                         </div>
+
+                        <?php
+                            if(isset($_SESSION['error']))    echo $_SESSION['error'];           
+                        ?>
 
                         <div class="d-flex justify-content-center">
                             <button type="submit" class="btn login-btn text-center"> Zaloguj się</button>

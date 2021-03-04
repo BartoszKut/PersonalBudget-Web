@@ -32,7 +32,7 @@
                     <img src="img/logo.png" width="90" height="90" alt="" class="mt-3"/>
                 </div>
                 <div class="col">
-                    <a href="log-in.html" class="btn btn-primary log-in-btn mt-3 mr-3" value="Zaloguj się!" tabindex="-1" role="button" aria-disabled="true">Zaloguj się</a>
+                    <a href="log-in.php" class="btn btn-primary log-in-btn mt-3 mr-3" value="Zaloguj się!" tabindex="-1" role="button" aria-disabled="true">Zaloguj się</a>
                 </div> 	
                 
             </div>
@@ -64,7 +64,7 @@
 
 	<footer>
 
-        <div class="container foot-cont">
+
 
             <div class="row">
 
@@ -82,7 +82,7 @@
          
             </div>
 
-        </div>
+   
 
 	</footer>
 	
