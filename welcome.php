@@ -1,9 +1,12 @@
 <?php
     session_start();
 
-    if((isset($_SESSION['loged-in'])) && ($_SESSION['loged-in']==true)){ //if user is logged in, redirect to main-menu.php
-        header('Location: main-menu.php');
+    if(!isset($_SESSION['success_account_create'])){ //if user is logged in, redirect to main-menu.php
+        header('Location: index.php');
         exit(); //leave file, dont execute rest of code from this file
+    }
+    else{
+        unset($_SESSION['success_account_create']);
     }
 ?>
 
@@ -42,30 +45,12 @@
                     </div>
 
                     <div class="col title">
-                        <h1>Zaloguj się do swojego konta<br/>PersonalBudget</h1>
+                        <h1>Gratulacje!<br/><br/>Twoje konto PersonalBudget zostało utworzone<br/><br/>Zaloguj się do swojego konta</h1>
                     </div>
 
-                    <form action="log_and_pass_check.php" method="post">
-                        
-                        <div class="form-group d-flex justify-content-center">
-                            <input type="text" class="form-control" name="login" placeholder="login">
-                        </div>
-
-                        <div class="form-group d-flex justify-content-center">
-                            <input type="password" class="form-control" name="password" placeholder="hasło">
-                        </div>
-                        
-                        <?php ///////////////////////////////////////////////
-                            if(isset($_SESSION['er']))    echo $_SESSION['er'];           
-                        ?>
-
-                        <div class="d-flex justify-content-center">
-                            <button type="submit" class="btn login-btn text-center"> Zaloguj się</button>
-                        </div>
-
-                    </form>
-
-                    <h5 class="d-flex justify-content-center">Nie posiadasz konta? <a href="sign-in.html" class="createAccount"> Zarejestruj się</a></h5>
+                    <div class="d-flex justify-content-center mt-5 mb-5">
+                        <a href="log-in.php" class="btn login-btn text-center"> Zaloguj się</a>
+                    </div>
 
                 </div>
             </div>
@@ -73,9 +58,7 @@
 
     </main>
 
-    <footer>
-
-        
+    <footer>       
 
             <div class="row foot-cont">                           
 

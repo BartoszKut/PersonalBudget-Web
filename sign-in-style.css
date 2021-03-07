@@ -66,7 +66,7 @@ input[type=email]:focus{
 }
 
 .login-btn{
-    margin-top: 50px;
+	margin-bottom: 30px;
     margin-bottom: 20px;
 	background-color: #4cb050;
 	font-size: 20px;
@@ -172,4 +172,9 @@ a{
 
 .gh:visited{
 	color: white;
+}
+
+.error{
+	color: red;
+	margin-top: 10px;
 }
