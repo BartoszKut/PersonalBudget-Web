@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    if((isset($_SESSION['loged-in'])) && ($_SESSION['loged-in']==true)){ //if user is logged in, redirect to main-menu.php
+        header('Location: main-menu.php');
+        exit(); //leave file, dont execute rest of code from this file
+    }
 ?>
 
 <!DOCTYPE HTML>
@@ -49,8 +54,8 @@
                         <div class="form-group d-flex justify-content-center">
                             <input type="password" class="form-control" name="password" placeholder="hasło">
                         </div>
-
-                        <?php
+                        
+                        <?php ///////////////////////////////////////////////
                             if(isset($_SESSION['error']))    echo $_SESSION['error'];           
                         ?>
 

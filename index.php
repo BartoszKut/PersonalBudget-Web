@@ -54,7 +54,7 @@
                     <p class="col description text-center">Zacznij spełniać marzenia już dziś!</p>
                         
                     <div class="col" style="text-align: center;">
-                        <a href="sign-in.html" class="btn btn-primary sign-in-btn" tabindex="-1" role="button" aria-disabled="true">Załóż konto!</a>
+                        <a href="sign-in.php" class="btn btn-primary sign-in-btn" tabindex="-1" role="button" aria-disabled="true">Załóż konto!</a>
                     </div>
             </div>
 

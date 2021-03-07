@@ -29,7 +29,7 @@
                 <div class="col mainbg">
 
                     <div class="d-inline-block">
-                        <a href="index.html"><img id="logo" src="img/logo.png" width="90" height="90" alt=""/></a>
+                        <a href="index.php"><img id="logo" src="img/logo.png" width="90" height="90" alt=""/></a>
                     </div>
 
                     <div class="col title">

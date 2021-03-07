@@ -1,5 +1,10 @@
 <?php
     session_start();
+
+    if(!isset($_SESSION['loged-in'])){
+        header('Location: log-in.php');
+        exit();
+    }
 ?>
 
 <!DOCTYPE HTML>
@@ -32,10 +37,10 @@
                     <div class="col">           
 
                         <div class="d-inline-block">
-                            <a href="index.html"><img id="logo" src="img/logo.png" width="90" height="90" alt=""/></a>
+                            <a href="index.php"><img id="logo" src="img/logo.png" width="90" height="90" alt=""/></a>
                         </div>
 
-                        <a href="index.html" class="button" style="float: right; margin-top: 20px; margin-right: 20px">Wyloguj się
+                        <a href="log-out.php" class="button" style="float: right; margin-top: 20px; margin-right: 20px">Wyloguj się
                         </a>
                     </div>   
                 </div> 
