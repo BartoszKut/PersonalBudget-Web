@@ -2,12 +2,14 @@
 
     session_start();
 
-    if(isset($_POST['email'])){
+    /*require_once "db_php_connection.php"; //this file opens connection with MySQL server
+
+    if((isset($_POST['name'])) && (isset($_POST['surname'])) && (isset($_POST['login'])) && (isset($_POST['email'])) && (isset($_POST['password'])) && (isset($_POST['password2']))){
         $all_ok = true; //correct validation
 
         //name correctness check
-        $name = $_POST['name'];
-        if((strlen($name)<3) || (strlen($name)>20)){ //checking length of string name (3-20)
+        $name = filter_input(INPUT_POST, 'name');;
+        if((strlen($name) < 3) || (strlen($name) > 20)){ //checking length of string name (3-20)
             $all_ok = false;
             $_SESSION['e_name'] = "Imię musi posiadać od 3 do 20 znaków!";
         }
@@ -16,9 +18,8 @@
             $_SESSION['e_name'] = "Imię może składać się tylko z liter! (bez polskich znaków)";
         }
 
-
         //surname correctness check
-        $surname = $_POST['surname'];
+        $surname = filter_input(INPUT_POST, 'surname');
         if((strlen($surname)<3) || (strlen($surname)>20)){ //checking length of string name (3-20)
             $all_ok = false;
             $_SESSION['e_surname'] = "Nazwisko musi posiadać od 3 do 20 znaków!";
@@ -30,7 +31,7 @@
 
 
         //login correctness check
-        $login = $_POST['login'];
+        $login = filter_input(INPUT_POST, 'login');
         if((strlen($login)<3) || (strlen($login)>20)){ //checking length of string name (3-20)
             $all_ok = false;
             $_SESSION['e_login'] = "Login musi posiadać od 3 do 20 znaków!";
@@ -42,7 +43,7 @@
 
 
         //email correctnes check
-        $email = $_POST['email'];
+        $email = filter_input(INPUT_POST, 'email');
         $safe_email = filter_var($email, FILTER_SANITIZE_EMAIL);
         
         if((filter_var($safe_email, FILTER_VALIDATE_EMAIL)==false) || ($safe_email != $email)){
@@ -52,8 +53,8 @@
 
 
         //password correctnes check
-        $password = $_POST['password'];
-        $password2 = $_POST['password2'];
+        $password = filter_input(INPUT_POST, 'password');
+        $password2 = filter_input(INPUT_POST, 'password2');
         
         if((strlen($password)<6) || (strlen($password)>20)){ 
             $all_ok = false;
@@ -61,7 +62,7 @@
         }
         if($password != $password2){ 
             $all_ok = false;
-            $_SESSION['e_password'] = "Hasło muszą być identyczne!";
+            $_SESSION['e_password'] = "Hasła muszą być identyczne!";
         }
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -75,60 +76,46 @@
         $_SESSION['e_captcha'] = "Potwierdź, że nie jestes botem!";
         }
 
+        //check email existing
+        $newUserQuery = $database->prepare('SELECT user_id FROM users WHERE email = :email');
+        $newUserQuery->bindValue(':email', $email, PDO::PARAM_STR);
+        $newUserQuery->execute(); 
 
-        //connection with MySQL
-        require_once "connect.php";
-        mysqli_report(MYSQLI_REPORT_STRICT); //kind of errors report, no warnings, just exceptions
+        $how_many_emails = $newUserQuery->rowCount();
+        if($how_many_emails > 0){
+            $all_ok = false;
+            $_SESSION['e_email'] = "Istnieje już konto, połączone z tym adresem e-mail!";
+            }        
 
-        try{
-            $connection = new mysqli($host, $database_user, $database_password, $database_name);
-            if($connection->connect_errno != 0){
-                throw new Exception(mysqli_connect_errno());
+        //check login existing
+        $newUserQuery2 = $database->prepare('SELECT user_id FROM users WHERE login = :login');
+        $newUserQuery2->bindValue(':login', $login, PDO::PARAM_STR);
+        $newUserQuery2->execute();       
+
+        $how_many_logins = $newUserQuery2->rowCount();
+        if($how_many_logins > 0){
+            $all_ok = false;
+            $_SESSION['e_login'] = "Istnieje już konto o takim loginie!";
             }
-            else{
-                //check email existing
-                $result = $connection->query("SELECT user_id FROM users WHERE email='$email'");
-                if(!$result) throw new Exception($connection->error);
 
-                $how_many_emails = $result->num_rows;
-                if($how_many_emails > 0){
-                    $all_ok = false;
-                    $_SESSION['e_email'] = "Istnieje już konto, połączone z tym adresem e-mail!";
-                    }
-                
+        //tests pass, client added
+        $addNewUserQuery = $database->prepare('INSERT INTO users VALUES (NULL, :name, :surname, :login, :email, :password');
+        $addNewUserQuery->bindValue(':name', $name, PDO::PARAM_STR);
+        $addNewUserQuery->bindValue(':surname', $surname, PDO::PARAM_STR);
+        $addNewUserQuery->bindValue(':login', $login, PDO::PARAM_STR);
+        $addNewUserQuery->bindValue(':email', $email, PDO::PARAM_STR);
+        $addNewUserQuery->bindValue(':password', $password_hash, PDO::PARAM_STR);          
 
-                //check login existing
-                $result2 = $connection->query("SELECT user_id FROM users WHERE login='$login'");
-                if(!$result2) throw new Exception($connection->error);
-
-                $how_many_logins = $result2->num_rows;
-                if($how_many_logins > 0){
-                    $all_ok = false;
-                    $_SESSION['e_login'] = "Istnieje już konto o takim loginie!";
-                    }
-
-                //tests pass, client added
-                if($all_ok == true){  
-                    if($connection->query("INSERT INTO users VALUES(NULL, '$name', '$surname', '$login', '$email', '$password_hash')")){
-                        $_SESSION['success_account_create'] = true;
-                        header('Location: welcome.php');
-                    }
-                    else{
-                        throw new Exception($connection->error);
-                    }
-                }                
-
-                $connection->close();
-            }
-        } 
-        catch(Exception $er){
-            echo '<span style="color: red;">Błąd serwera</span>';
-            echo '<br/>Informacja developerska: '.$er;
-        }
+        if($all_ok == true){  
+            $addNewUserQuery->execute(); 
+            $_SESSION['success_account_create'] = true;
+            header('Location: welcome.php');            
+        }                
     }
-
-
-
+    else {
+        header('Location: index.php');
+   }
+*/
 ?>
 
 <!DOCTYPE HTML>
@@ -177,7 +164,7 @@
                         <h1>Aby załoyć konto,<br/>uzupełnij ponisze dane.</h1>
                     </div>
 
-                    <form method="post"> <!-- no action argument means that the same file will process the code-->
+                    <form action="add_new_user.php" method="post"> 
                         
                         <div class="form-group d-flex justify-content-center">
                             <input type="text" class="form-control" name="name" aria-describedby="name" placeholder="Imię">
@@ -230,6 +217,10 @@
                             if(isset($_SESSION['e_password'])){
                                 echo '<div class="error d-flex justify-content-center">'.$_SESSION['e_password'].'</div>';
                                 unset($_SESSION['e_password']);
+                            }
+                            if(isset($_SESSION['e_empty'])){
+                                echo '<div class="error d-flex justify-content-center">'.$_SESSION['e_empty'].'</div>';
+                                unset($_SESSION['e_empty']);
                             }
                         ?>
 

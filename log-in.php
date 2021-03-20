@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if((isset($_SESSION['loged-in'])) && ($_SESSION['loged-in']==true)){ //if user is logged in, redirect to main-menu.php
+    if((isset($_SESSION['logged_user_id'])) && ($_SESSION['logged_user_id'] != 0)){ //if user is logged in, redirect to main-menu.php
         header('Location: main-menu.php');
         exit(); //leave file, dont execute rest of code from this file
     }
@@ -56,7 +56,8 @@
                         </div>
                         
                         <?php ///////////////////////////////////////////////
-                            if(isset($_SESSION['er']))    echo $_SESSION['er'];           
+                            if($_SESSION['bad_attempt'] == true)
+                                echo '<p style="text-align: center; color: red;"> Niepoprawny login lub hasło. </>';         
                         ?>
 
                         <div class="d-flex justify-content-center">
@@ -65,7 +66,7 @@
 
                     </form>
 
-                    <h5 class="d-flex justify-content-center">Nie posiadasz konta? <a href="sign-in.html" class="createAccount"> Zarejestruj się</a></h5>
+                    <h5 class="d-flex justify-content-center">Nie posiadasz konta? <a href="sign-in.php" class="createAccount"> Zarejestruj się</a></h5>
 
                 </div>
             </div>

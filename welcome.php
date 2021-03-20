@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    if(!isset($_SESSION['success_account_create'])){ //if user is logged in, redirect to main-menu.php
+    if(!isset($_SESSION['success_account_create'])){ //if user doesn't create account, redirect to index.php
         header('Location: index.php');
         exit(); //leave file, dont execute rest of code from this file
     }

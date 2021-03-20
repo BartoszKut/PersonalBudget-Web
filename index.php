@@ -47,7 +47,7 @@
 
             <div class="container main-cont">
             
-                    <h1 class="col title text-center">Twoje finanse pod pełną kontorlą</h1>
+                    <h1 class="col title text-center">Twoje finanse pod pełną kontrolą</h1>
                     <p class="col description text-center">PersonalBudget pozwoli w prosty sposób kontrolować Twoje finanse,<br/>
                     zoptymalizyje wydatki, zwiększy oszczędności.</p>	
                     
