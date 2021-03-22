@@ -1,3 +1,12 @@
+<?php
+    session_start();
+
+    if(!isset($_SESSION['logged_user_id'])){
+        header('Location: log-in.php');
+        exit();
+    }
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
 <head>
@@ -32,10 +41,10 @@
                     <div class="col">           
 
                         <div class="d-inline-block">
-                            <a href="main-menu.html" class="btn mmbtn" role="button">Menu główne</a>
+                            <a href="main-menu.php" class="btn mmbtn" role="button">Menu główne</a>
                         </div>
 
-                        <a href="index.html" class="button" style="float: right; margin-top: 20px; margin-right: 20px">Wyloguj się
+                        <a href="index.php" class="button" style="float: right; margin-top: 20px; margin-right: 20px">Wyloguj się
                         </a>
                     </div>   
                 </div> 
@@ -44,26 +53,26 @@
                     <h1>Nowy przychód </h1>
                 </div>
 
-                <form method="post">
+                <form action="add-income-to-database.php" method="post">
 
                     <div class="form-group row">
                         <label for="value" class="col-5 col-form-label"><h5>Kwota</h5></label>
                         <div class="col-7" >
-                            <input type="number" step="0.01" min="0" required></label>
+                            <input type="number" name="amount" step="0.01" min="0" required></label>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="date" class="col-5 col-form-label"><h5>Data</h5></label>
                         <div class="col-7" >
-                            <input type="date" id="theDate" required></label>
+                            <input type="date" name="date" id="theDate" required></label>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="paymentmethod" class="col-5 col-form-label"><h5>Kategoria</h5></label>
+                        <label for="category" class="col-5 col-form-label"><h5>Kategoria</h5></label>
                         <div class="col-7" >
-                            <select id="paymentmethod">
+                            <select id="category" name="category">
                                 <option>Wypłata</option>
                                 <option>Najem</option>
                                 <option>Praca dodatkowa</option>

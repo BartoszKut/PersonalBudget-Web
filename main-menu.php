@@ -58,19 +58,19 @@
                 <div class="row">
                     
                     <div class="col-12 text-center">
-                        <a class="btn optionbtn" href="add-income.html" role="button">Dodaj przychód</a>             
+                        <a class="btn optionbtn" href="add-income.php" role="button">Dodaj przychód</a>             
                     </div>
 
                     <div class="col-12 text-center">
-                        <a class="btn optionbtn" href="add-expense.html" role="button">Dodaj wydatek</a>             
+                        <a class="btn optionbtn" href="add-expense.php" role="button">Dodaj wydatek</a>             
                     </div>
 
                     <div class="col-12 text-center">
-                        <a class="btn optionbtn" href="balance.html" role="button">Bilnas</a>             
+                        <a class="btn optionbtn" href="balance.php" role="button">Bilnas</a>             
                     </div>
 
                     <div class="col-12 text-center">
-                        <a class="btn optionbtn" href="settings.html" role="button">Ustawienia</a>             
+                        <a class="btn optionbtn" href="settings.php" role="button">Ustawienia</a>             
                     </div>
 
                 </div>

@@ -4,7 +4,6 @@
 
     require_once "db_php_connection.php"; //this file opens connection with MySQL server
 
-    //if((isset($_POST['name'])) && (isset($_POST['surname'])) && (isset($_POST['login'])) && (isset($_POST['email'])) && (isset($_POST['password'])) && (isset($_POST['password2']))){
     if(!(($_POST['name']=="") || ($_POST['surname']=="") || ($_POST['login']=="") || ($_POST['email'] =="") || ($_POST['password']=="") || ($_POST['password2']==""))){
         $all_ok = true; //correct validation
 
