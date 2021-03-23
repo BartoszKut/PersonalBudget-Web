@@ -75,7 +75,7 @@
                             <select id="category" name="category">
                                 <option>Wypłata</option>
                                 <option>Najem</option>
-                                <option>Praca dodatkowa</option>
+                                <option>Allegro</option>
                                 <option>Inne</option>
                             </select>
                         </div>

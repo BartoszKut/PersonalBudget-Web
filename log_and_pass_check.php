@@ -21,7 +21,8 @@
     $user = $userQuery -> fetch();
 
     if($user && password_verify($password, $user['password'])){
-        $_SESSION['logged_user_id'] = $user['user_id'];       
+        $_SESSION['logged_user_id'] = $user['user_id'];
+        $_SESSION['logged_user_id'] = $logged_user_id;       
         unset($_SESSION['bad_attempt']);
         header('Location: main-menu.php');
     }else{

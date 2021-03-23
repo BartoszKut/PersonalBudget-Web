@@ -101,19 +101,35 @@
             $_SESSION['e_login'] = "Istnieje już konto o takim loginie!";
             }
 
-
-        //tests pass, client added
-        $addNewUserQuery = $database->prepare("INSERT INTO users VALUES (NULL, :name, :surname, :login, :email, :password)");
-
-        $addNewUserQuery->bindValue(':name', $name, PDO::PARAM_STR);
-        $addNewUserQuery->bindValue(':surname', $surname, PDO::PARAM_STR);
-        $addNewUserQuery->bindValue(':login', $login, PDO::PARAM_STR);
-        $addNewUserQuery->bindValue(':email', $email, PDO::PARAM_STR);
-        $addNewUserQuery->bindValue(':password', $password_hash, PDO::PARAM_STR);  
-        
-
+            
         if($all_ok == true){  
+            //tests pass, client added
+            $addNewUserQuery = $database->prepare("INSERT INTO users VALUES (NULL, :name, :surname, :login, :email, :password)");
+            $addNewUserQuery->bindValue(':name', $name, PDO::PARAM_STR);
+            $addNewUserQuery->bindValue(':surname', $surname, PDO::PARAM_STR);
+            $addNewUserQuery->bindValue(':login', $login, PDO::PARAM_STR);
+            $addNewUserQuery->bindValue(':email', $email, PDO::PARAM_STR);
+            $addNewUserQuery->bindValue(':password', $password_hash, PDO::PARAM_STR);  
             $addNewUserQuery->execute(); 
+
+            //what is user_id of new user
+            $userIdQuery = $database->prepare("SELECT user_id FROM users WHERE login = :login");
+            $userIdQuery->bindValue(':login', $login, PDO::PARAM_STR);
+            $userIdQuery->execute();
+            $new_user = $userIdQuery -> fetch();
+            $_SESSION['new_user_id'] = $new_user['user_id'];//TILL THIS TIME EVERYTHING IS OK!
+
+            //add categories of incomes and expenses to asigned_to_user
+            $assign_incomes_categories = $database->prepare("INSERT INTO incomes_category_assigned_to_users VALUES (NULL, :user_id, (SELECT name FROM incomes_category_default) AS name)");
+            $assign_incomes_categories->bindValue(':user_id', $_SESSION['new_user_id'], PDO::PARAM_INT);
+            $assign_incomes_categories->execute();
+            echo "<br/><br/>query kopiowania do tablicy dziala";
+
+            $assign_expenses_categories = $database->prepare("INSERT INTO expenses_category_assigned_to_users VALUES (NULL, :user_id, (SELECT name FROM expenses_category_default) AS name");
+            $assign_incomes_categories->bindValue(':user_id', $_SESSION['new_user_id'], PDO::PARAM_INT);
+            $assign_incomes_categories->execute();
+
+            
             $_SESSION['success_account_create'] = true;
             header('Location: welcome.php');            
         }                

@@ -92,7 +92,6 @@
                                 <option>Dzieci</option>
                                 <option>Rozrywka</option>
                                 <option>Edukacja</option>
-                                <option>Spłata zadłuenia</option>
                                 <option>Oszczędności</option>
                                 <option>Darowizna</option>
                             </select>
