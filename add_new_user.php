@@ -101,7 +101,7 @@
             $_SESSION['e_login'] = "Istnieje już konto o takim loginie!";
             }
 
-            
+
         if($all_ok == true){  
             //tests pass, client added
             $addNewUserQuery = $database->prepare("INSERT INTO users VALUES (NULL, :name, :surname, :login, :email, :password)");
@@ -112,22 +112,22 @@
             $addNewUserQuery->bindValue(':password', $password_hash, PDO::PARAM_STR);  
             $addNewUserQuery->execute(); 
 
-            //what is user_id of new user
-            $userIdQuery = $database->prepare("SELECT user_id FROM users WHERE login = :login");
-            $userIdQuery->bindValue(':login', $login, PDO::PARAM_STR);
-            $userIdQuery->execute();
-            $new_user = $userIdQuery -> fetch();
-            $_SESSION['new_user_id'] = $new_user['user_id'];//TILL THIS TIME EVERYTHING IS OK!
 
             //add categories of incomes and expenses to asigned_to_user
-            $assign_incomes_categories = $database->prepare("INSERT INTO incomes_category_assigned_to_users VALUES (NULL, :user_id, (SELECT name FROM incomes_category_default) AS name)");
-            $assign_incomes_categories->bindValue(':user_id', $_SESSION['new_user_id'], PDO::PARAM_INT);
+            $assign_incomes_categories = $database->prepare("INSERT INTO incomes_category_assigned_to_users (user_id, name) SELECT users.user_id, incomes_category_default.name FROM users, incomes_category_default WHERE users.login= :login");
+            $assign_incomes_categories->bindValue(':login', $login, PDO::PARAM_STR);
             $assign_incomes_categories->execute();
-            echo "<br/><br/>query kopiowania do tablicy dziala";
+            
 
-            $assign_expenses_categories = $database->prepare("INSERT INTO expenses_category_assigned_to_users VALUES (NULL, :user_id, (SELECT name FROM expenses_category_default) AS name");
-            $assign_incomes_categories->bindValue(':user_id', $_SESSION['new_user_id'], PDO::PARAM_INT);
-            $assign_incomes_categories->execute();
+            $assign_expenses_categories = $database->prepare("INSERT INTO expenses_category_assigned_to_users (user_id, name) SELECT users.user_id, expenses_category_default.name FROM users, expenses_category_default WHERE users.login= :login");
+            $assign_expenses_categories->bindValue(':login', $login, PDO::PARAM_STR);
+            $assign_expenses_categories->execute();
+
+
+            //add categories of payment method to asigned_to_user
+            $assign_payment_method = $database->prepare("INSERT INTO payment_methods_assigned_to_users (user_id, name) SELECT users.user_id, payment_methods_default.name FROM users, payment_methods_default WHERE users.login= :login");
+            $assign_payment_method->bindValue(':login', $login, PDO::PARAM_STR);
+            $assign_payment_method->execute();
 
             
             $_SESSION['success_account_create'] = true;
