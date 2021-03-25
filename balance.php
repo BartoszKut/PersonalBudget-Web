@@ -32,16 +32,17 @@
                     <div class="col">           
 
                         <div class="d-inline-block">
-                            <a href="main-menu.html" class="btn mmbtn" role="button">Menu główne</a>
+                            <a href="main-menu.php" class="btn mmbtn" role="button">Menu główne</a>
                         </div>
 
-                        <a href="index.html" class="button" style="float: right; margin-top: 20px; margin-right: 20px">Wyloguj się
-                        </a>
+                        <a href="index.html" class="button" style="float: right; margin-top: 20px; margin-right: 20px">Wyloguj się</a>
                     </div>   
                 </div> 
 
-                <div class="col title">
-                    <h1>Przeglądaj bilans</h1>
+                <div class="row">
+                    <div class="col title">
+                        <h1>Przeglądaj bilans</h1>
+                    </div>
                 </div>
 
                 <div class="row">
@@ -58,25 +59,24 @@
                             <h2>Wprowadź datę:</h2>
                         </div>
 
-                        <div class="row">
-                            <form action="download-incomes-from-database.php" method="post">
                         
-                                <div class="form-group">
-                                    <label for="date" class="col-6 col-form-label"><h5>Data</h5></label>
-                                    <div class="col-6" >
-                                        <input type="date" name="date" id="theDate" required></label>
-                                    </div>
+                        <form action="download-incomes-from-database.php" method="post">
+                    
+                            <div class="row form-group">
+                                <label for="date" class="col-5 col-form-label"><h5>Data</h5></label>
+                                <div class="col-7" >
+                                    <input type="date" name="date" id="theDate" required></label>
                                 </div>
-                        
-                                <div class="form-group">
-                                    <label for="date" class="col-5 col-form-label"><h5>Data</h5></label>
-                                    <div class="col-7" >
-                                        <input type="date" name="date" id="theDate" required></label>
-                                    </div>
+                            </div>
+                    
+                            <div class="row form-group">
+                                <label for="date" class="col-5 col-form-label"><h5>Data</h5></label>
+                                <div class="col-7" >
+                                    <input type="date" name="date" id="theDate" required></label>
                                 </div>
-                            </form>
-                        </div>
-                        	
+                            </div>
+                            
+                        </form>
 
                     </div>   
     
