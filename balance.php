@@ -54,13 +54,38 @@
                     </div>
 
                     <div class="col-4 d-flex justify-content-center">
-                        <h2>Wprowadź datę</h2>
-                    </div>
+                        <div class="row">
+                            <h2>Wprowadź datę:</h2>
+                        </div>
+
+                        <div class="row">
+                            <form action="download-incomes-from-database.php" method="post">
+                        
+                                <div class="form-group">
+                                    <label for="date" class="col-6 col-form-label"><h5>Data</h5></label>
+                                    <div class="col-6" >
+                                        <input type="date" name="date" id="theDate" required></label>
+                                    </div>
+                                </div>
+                        
+                                <div class="form-group">
+                                    <label for="date" class="col-5 col-form-label"><h5>Data</h5></label>
+                                    <div class="col-7" >
+                                        <input type="date" name="date" id="theDate" required></label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        	
+
+                    </div>   
+    
                 </div>
+            </div>
 
                 
-            </div>
         </div>
+        
 
     </main>
 

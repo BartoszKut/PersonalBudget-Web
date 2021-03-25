@@ -46,7 +46,7 @@
                 </div> 
                 
                 <div class="row info">
-
+    
                     <h3 class="col-6">Twoje przychody w tym miesiącu: </h3>
                     <div id="incomes" class="col-6">pewnie uzyc innerHTML w JS'ie</div>
 

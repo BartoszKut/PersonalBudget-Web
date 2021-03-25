@@ -35,9 +35,4 @@
         echo "<br/>powinien wykonac"; 
 
         header('Location: main-menu.php');
-        
-
-        
-
-
     }

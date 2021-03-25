@@ -15,7 +15,6 @@
 
         $add_income_to_database = $database->prepare("INSERT INTO incomes (id, user_id, income_category_assigned_to_user_id, amount, date_of_income, income_comment) VALUES (NULL, :user_id, (SELECT id FROM incomes_category_assigned_to_users WHERE user_id = :user_id AND name = :incomecat), :amount, :date, :comment)");
 
-
         $add_income_to_database->bindParam(':user_id', $logged_user_id, PDO::PARAM_INT);
         echo $logged_user_id."<br/><br/>"; 
         $add_income_to_database->bindParam(':incomecat', $incomecat, PDO::PARAM_STR);
@@ -31,9 +30,4 @@
         echo "<br/>powinien wykonac"; 
 
         header('Location: main-menu.php');
-        
-
-        
-
-
     }
