@@ -65,14 +65,14 @@
                             <div class="row form-group">
                                 <label for="date" class="col-5 col-form-label"><h5>Data</h5></label>
                                 <div class="col-7" >
-                                    <input type="date" name="date" id="theDate" required></label>
+                                    <input type="date" name="begining_date" id="theDate" required></label>
                                 </div>
                             </div>
                     
                             <div class="row form-group">
                                 <label for="date" class="col-5 col-form-label"><h5>Data</h5></label>
                                 <div class="col-7" >
-                                    <input type="date" name="date" id="theDate" required></label>
+                                    <input type="date" name="end_date" id="theDate" required></label>
                                 </div>
                             </div>
                             

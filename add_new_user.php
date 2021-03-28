@@ -101,7 +101,6 @@
             $_SESSION['e_login'] = "Istnieje już konto o takim loginie!";
             }
 
-
         if($all_ok == true){  
             //tests pass, client added
             $addNewUserQuery = $database->prepare("INSERT INTO users VALUES (NULL, :name, :surname, :login, :email, :password)");

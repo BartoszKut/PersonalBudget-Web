@@ -11,7 +11,7 @@
 
         //amount correctness check
         $amount = $_POST['amount'];
-        if((is_numeric($amount) == false) || ($amount < 0.01)){
+        if((is_numeric($amount) == false) || ($amount < 0.01) || ($amount > 2147483647)){
             $all_ok = false;
             $_SESSION['e_amount'] = "Podaj prawidłową wartość przychodu.";
         }
@@ -56,13 +56,12 @@
             $select_payment_method_id = $database->prepare("SELECT id FROM payment_methods_assigned_to_users WHERE user_id = :user_id AND name = :paymentmethod");
             $select_payment_method_id->bindValue(':user_id', $logged_user_id, PDO::PARAM_INT);
             $select_payment_method_id->bindValue(':paymentmethod', $paymentmethod, PDO::PARAM_STR);
+            $select_payment_method_id->execute();
             $payment_id = $select_payment_method_id->fetchColumn();
-            echo "Platnosc id dziala <br>";
 
 
             //query -> add expense to database
             $add_expense_to_database = $database->prepare("INSERT INTO expenses (id, user_id, expense_category_assigned_to_user_id, payment_method_assigned_to_user_id, amount, date_of_expense, expense_comment) VALUES (NULL, :user_id, :category_id, :payment_id, :amount, :date, :comment)");
-            echo "query dziala<br>";
             $add_expense_to_database->bindParam(':user_id', $logged_user_id, PDO::PARAM_INT);
             $add_expense_to_database->bindParam(':category_id', $category_id, PDO::PARAM_INT);
             $add_expense_to_database->bindParam(':payment_id', $payment_id, PDO::PARAM_INT);

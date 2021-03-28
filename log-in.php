@@ -56,8 +56,9 @@
                         </div>
                         
                         <?php ///////////////////////////////////////////////
-                            if($_SESSION['bad_attempt'] == true)
-                                echo '<p style="text-align: center; color: red;"> Niepoprawny login lub hasło. </>';         
+                            if(isset($_SESSION['bad_attempt'])){
+                                echo '<p style="text-align: center; color: red;"> Niepoprawny login lub hasło. </>';  
+                            }       
                         ?>
 
                         <div class="d-flex justify-content-center">

@@ -12,9 +12,10 @@
 
         //amount correctness check
         $amount = $_POST['amount'];
-        if((is_numeric($amount) == false) || ($amount < 0.01)){
+        if((is_numeric($amount) == false) || ($amount < 0.01) || ($amount > 2147483647)){
             $all_ok = false;
             $_SESSION['e_amount'] = "Podaj prawidłową wartość przychodu.";
+            header('Location: add-income.php');
         }
 
         //date correctness check

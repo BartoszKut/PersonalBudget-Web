@@ -60,6 +60,12 @@
                         <div class="col-7" >
                             <input type="number" name="amount" step="0.01" min="0" required></label>
                         </div>
+                        <?php
+                            if(isset($_SESSION['e_amount'])){
+                                echo '<p style="text-align: center; color: red;">'.$_SESSION['e_amount'].'</>';
+                                unset($_SESSION['e_amount']);
+                            }
+                        ?>
                     </div>
 
                     <div class="form-group row">
