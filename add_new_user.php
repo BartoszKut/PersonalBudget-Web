@@ -131,7 +131,10 @@
             
             $_SESSION['success_account_create'] = true;
             header('Location: welcome.php');            
-        }                
+        } 
+        else{
+            header('Location: sign-in.php');
+        }               
     }
     else {
         $_SESSION['e_empty'] = "Uzupełnij wszystkie powysze pola!";

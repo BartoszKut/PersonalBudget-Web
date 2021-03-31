@@ -7,11 +7,26 @@ body{
    padding: 10px;
 }
 
+.button{
+	font-size: 20px;
+	color: black;
+}
+
+.button:hover{
+	font-weight: 600;
+	color: #273238;
+}
+
+.button:focus{
+	border: none;
+}
+
 .mmbtn{
 	background-color: #273238;
 	color: white;
 	margin-top: 15px;
 	margin-left: 15px;
+	margin-bottom: 100px;
 	padding: 12px 20px 10px 20px;
 	border-radius: 25px;
 	border: none;
@@ -42,9 +57,67 @@ body{
 	box-shadow:         5px 5px 13px 1px rgba(160, 156, 156, 0.33); 
 }
 
+.optionbtn{
+	margin-left: 25px;
+	width: 80%;
+	max-width: 400px;
+    margin-bottom: 50px;
+	background-color: #4cb050;
+	font-size: 20px;
+	color: white;
+	padding-top: 22px; 
+	padding-bottom: 17px;
+	border: none;
+	border-radius: 35px;
+	cursor: pointer;
+	letter-spacing: 1px;
+	outline: none;
+	-webkit-box-shadow: 5px 5px 13px 1px rgba(0,0,0,0.33);
+	-moz-box-shadow: 5px 5px 13px 1px rgba(0,0,0,0.33);
+	box-shadow: 5px 5px 13px 1px rgba(0,0,0,0.33);
+}
+
+.optionbtn:hover{
+	background-color: #22aa2a;
+    color: #273238;
+	cursor: pointer;
+}
+
+.optionbtn:focus{
+	background-color: #66bb6a;
+}
+
+.columntitle{
+	margin-top: 30px;
+}
+
+.balanceTitle{
+	margin-bottom: 50px;
+}
+
+.information{
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
 h1{
     text-align: center;
     font-weight: 600;
+}
+
+h3{
+	text-align: center;
+	font-weight: 700;
 }
 
 .title{

@@ -10,6 +10,11 @@
     $month_str = date("m",$whichMonth);
     $month = intval($month_str);
 
+    if($month == 1){
+        $month = 12;
+    }
+    else $month = $month - 1;
+
     if($month == 1) $month_in_string_pl = "styczeń";
     else if($month == 2) $month_in_string_pl = "luty";
     else if($month == 3) $month_in_string_pl = "marzec";
@@ -22,6 +27,7 @@
     else if($month == 10) $month_in_string_pl = "październik";
     else if($month == 11) $month_in_string_pl = "listopad";
     else if($month == 12) $month_in_string_pl = "grudzień";
+
 
     // I N C O M E S
 
@@ -46,9 +52,9 @@
 
             echo '<div class="card-header">'.$month_incomes[0].': '.$month_incomes[1].'zł'.'</div>';
             foreach($result_details_of_incomes as $incomes_details) {
-                //echo '<ul class="list-group list-group-flush"><li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i>'.' '.$incomes_details[0].' - '.$incomes_details[1].': '.$incomes_details[2].'zł '.'<i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li></ul>';   
-                }             
-        } */
+                echo '<ul class="list-group list-group-flush"><li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i>'.' '.$incomes_details[0].' - '.$incomes_details[1].': '.$incomes_details[2].'zł '.'<i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li></ul>';   
+            }             
+        }*/
 
     $all_incomes_sum = "SELECT SUM(amount) FROM incomes WHERE user_id = :logged_user_id AND Month(date_of_income) = :month";
     $sum_of_incomes = $database->prepare($all_incomes_sum);
@@ -56,6 +62,7 @@
     $sum_of_incomes->bindValue(':month', $month, PDO::PARAM_INT);
     $sum_of_incomes->execute();
     $incomes_sum = $sum_of_incomes->fetchColumn();
+
 
     // E X P E N S E S
         
@@ -83,8 +90,6 @@
                 //echo '<ul class="list-group list-group-flush"><li class="list-group-item"><i class="fas fa-long-arrow-alt-right"></i>'.' '.$expenses_details[0].' - '.$expenses_details[1].': '.$expenses_details[2].'zł '.'<i class="fas fa-edit"></i><i class="fas fa-trash-alt ml-1"></i> </li></ul>';   
             }             
         } */
-
-    $sql_balance_expenses = "SELECT category_expenses.name as category, SUM(expenses.amount) as amount FROM expenses INNER JOIN expenses_category_assigned_to_users as category_expenses WHERE expenses.expense_category_assigned_to_user_id = category_expenses.id AND expenses.user_id = :id_user AND Month(date_of_expense) = :month GROUP BY category ORDER BY amount DESC";
 
     $all_expenses_sum = "SELECT SUM(amount) FROM expenses WHERE user_id = :logged_user_id AND Month(date_of_expense) = :month";
     $sum_of_expenses = $database->prepare($all_expenses_sum);
@@ -193,7 +198,7 @@
                                         $query_select_expenses_details = $database->prepare($sql_expenses_details);
                                         $query_select_expenses_details->bindValue(':id_user', $logged_user_id, PDO::PARAM_INT);
                                         $query_select_expenses_details->bindValue(':month', $month, PDO::PARAM_INT);   
-                                        $query_select_expenses_details->bindValue(':category_name', $month_expenses[0], PDO::PARAM_INT);
+                                        $query_select_expenses_details->bindValue(':category_name', $month_expenses[0], PDO::PARAM_INT);   
                                         $query_select_expenses_details->execute();
                             
                                         $result_details_of_expenses = $query_select_expenses_details->fetchAll();
