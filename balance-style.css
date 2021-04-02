@@ -100,6 +100,21 @@ body{
 	margin-bottom: 30px;
 }
 
+.card-header{
+	margin-left: 10px;
+	margin-right: 20px;
+	font-size: 18px;
+	font-weight: 600;
+	padding-top: 15px;
+	padding-bottom: 8px;
+	border-bottom: solid 2px;
+}
+
+.list-group{
+	margin-left: 10px;
+	margin-right: 20px;
+}
+
 
 
 
@@ -116,6 +131,7 @@ h1{
 }
 
 h3{
+	margin-top: 20px;
 	text-align: center;
 	font-weight: 700;
 }

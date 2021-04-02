@@ -64,17 +64,8 @@ h3{
 	box-shadow: 5px 5px 13px 1px rgba(0,0,0,0.33);
 }
 
-.title{
-    margin-top: 50px;
-    margin-bottom: 100px;
-}
-
 .head{
-    margin-bottom: 60px;
-}
-
-.info{
-    margin-bottom: 60px;
+    margin-bottom: 35px;
 }
 
 .optionbtn{
@@ -178,3 +169,9 @@ a{
 .gh:visited{
 	color: white;
 }
+
+.PB{
+	margin-top: 5px;
+	margin-bottom: 40px;
+}
+

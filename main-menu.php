@@ -45,7 +45,7 @@
                     </div>   
                 </div> 
                 
-                <div class="row info">
+                <!--<div class="row info">
     
                     <h3 class="col-6">Twoje przychody w tym miesiącu: </h3>
                     <div id="incomes" class="col-6">pewnie uzyc innerHTML w JS'ie</div>
@@ -53,7 +53,13 @@
                     <h3 class="col-6">Twoje wydatki w tym miesiącu: </h3>
                     <div id="incomes" class="col-6">pewnie uzyc innerHTML w JS'ie</div>
                     
-                </div> 
+                </div> -->
+
+                <div class="row PB">
+    
+                    <h1 class="col-12 text-center title">PersonalBudget - zarządzaj swoimi  pieniędzmi!</h1>
+                            
+                </div>
                 
                 <div class="row">
                     
