@@ -63,9 +63,7 @@
 	</main>	
 
 	<footer>
-
-
-
+        
             <div class="row">
 
                 <a href="https://www.linkedin.com/in/bartosz-kut-0aa1a3167/" class="col-12 col-sm-8 col-md-5 col-lg-4 linkedin mx-auto mt-4 li">            
@@ -80,9 +78,7 @@
                     <i class="icon-mail-alt icon"><h6>@: bartosz.kut93@gmail.com<br/>m: +48 792 722 230</h6></i>                    
                 </div>
          
-            </div>
-
-   
+            </div> 
 
 	</footer>
 	
